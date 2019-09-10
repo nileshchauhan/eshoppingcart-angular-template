@@ -1,0 +1,45 @@
+<mat-grid-list cols="4">
+    <mat-grid-tile colspan="1">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+        <mat-card class="full-width ">
+            <h5>{{'LOGIN.TITLE'|translate}}</h5>
+            <mat-divider></mat-divider>
+            <br>
+            <form class="login-form" [formGroup]="loginForm">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="{{'LOGIN.EMAIL'|translate}}" name="userName" formControlName="userName"
+                        #userName required>
+                </mat-form-field>
+
+                <mat-error *ngIf="loginForm.controls['userName'].errors &&
+                loginForm.controls['userName'].errors.required &&                
+                 loginForm.controls['userName'].touched">{{'MESSAGE.EMPTY_EMAIL'|translate}}</mat-error>
+
+                <mat-error *ngIf="loginForm.controls['userName'].errors &&
+                loginForm.controls['userName'].errors.email">{{'MESSAGE.INVALID_EMAIL'|translate}}</mat-error>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="{{'LOGIN.PASSWORD'|translate}}" type="password" #password
+                        name="password" formControlName="password" required>
+                </mat-form-field>
+                <mat-error *ngIf="loginForm.controls['password'].errors &&
+                loginForm.controls['password'].errors.required &&                
+                 loginForm.controls['password'].touched">{{'MESSAGE.EMPTY_PASSWORD'|translate}}</mat-error>
+
+                <mat-error *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].errors.required &&
+                loginForm.controls['password'].errors.message && loginForm.controls['password'].touched">
+                    {{'MESSAGE.INVALID_PASSWORD'|translate}} </mat-error>
+            </form>
+            <mat-card-actions>
+                <button [disabled]='loginForm.invalid' (click)="onSubmit()" mat-raised-button
+                    color="primary">{{'LOGIN.TITLE'|translate}}</button>
+                <button mat-raised-button color="primary"
+                    (click)="loginForm && loginForm.reset()">{{'LOGIN.CANCEL'|translate}}</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,52 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let cartDetail"><img class="img-responsive" height="50" width="50"
+            src="{{cartDetail.image}}" /></mat-cell>
+        <mat-footer-cell *matFooterCellDef><b>Total</b> </mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
+        <mat-cell *matCellDef="let cartDetail"> <a class="" [routerLink]="['/product',cartDetail.productId]"
+            routerLinkActive="router-link-active"> {{cartDetail.productName}} </a> </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="orderQuantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ordered Qty </mat-header-cell>
+        <mat-cell *matCellDef="let cartDetail"> {{cartDetail.quantity}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalAmount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let cartDetail"> {{cartDetail.totalAmount}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef><b> {{total|currency}} </b></mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let cartDetail">
+          <a class="title-link" [routerLink]="['../product',cartDetail.productId]" routerLinkActive="router-link-active"><mat-icon>edit</mat-icon> </a>
+          <a class="title-link" href="javascript:void(0)" (click)="removeItemFromCart(cartDetail.id)"><mat-icon>delete_outline</mat-icon></a> </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="['image','productName','orderQuantity','totalAmount','action']">
+      </mat-header-row>
+      <mat-row *matRowDef="let row; columns:['image','productName','orderQuantity','totalAmount','action'];"></mat-row>
+      <mat-footer-row *matFooterRowDef="['image','productName','orderQuantity','totalAmount','action']"
+        class="example-first-footer-row">
+      </mat-footer-row>
+    </mat-table>
+    <!-- <mat-paginator [length]="cartDetails?.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator> -->
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-card">
+  <mat-card-content>
+    <div class="col mb-2">
+      <div class="row">
+        <a mat-button routerLink="/home" class="btn-primary">{{'APP.CONTINUE_SHOPPING'|translate}}</a>
+        <a mat-button class="btn-primary right-button">{{'APP.CHECKOUT'|translate}}</a>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

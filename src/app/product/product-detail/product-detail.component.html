@@ -1,0 +1,42 @@
+<!-- <mat-card class="panel"> -->
+
+
+<mat-grid-list cols="4" rows="5">
+  <mat-grid-tile colspan="1">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card class="example-card" style="min-height:300px">
+      <img mat-card-image src="{{productDetail?.image}}" alt="{{productDetail?.name}}">
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card class="example-card" style="min-height:300px">
+      <mat-card-content>
+        <p class="title-link">{{productDetail?.name}}</p>
+        <p>
+          {{ productDetail?.description }}
+        </p>
+        Price : $<del *ngIf="productDetail?.discount" class="strike-price">{{productDetail?.price}}</del>
+        <span appDiscountedPrice>{{productDetail?.price|discountCalculator:productDetail?.discount}}</span>
+      </mat-card-content>
+      <mat-card-actions>
+        <form class="example-form" [formGroup]="productForm">
+          <mat-form-field class="example-full-width">
+            <input matInput name="quantity" placeholder="Enter quantity" [(ngModel)]="quantity"
+              formControlName="quantity">
+          </mat-form-field>
+          <mat-error *ngIf="productForm.controls['quantity'].errors &&
+            productForm.controls['quantity'].errors.required && productForm.controls['quantity'].touched">
+            Please enter quantity</mat-error>
+          <mat-error *ngIf="productForm.controls['quantity'].errors && !productForm.controls['quantity'].errors.required&&
+            productForm.controls['quantity'].errors.message">
+            {{productForm.controls['quantity'].errors.message}}
+          </mat-error>
+          <button class="button-md mat-raised-button mat-accent" [disabled]="productForm.invalid"
+            (click)="addItemToCart()">Add to cart</button>
+        </form>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<!-- </mat-card> -->

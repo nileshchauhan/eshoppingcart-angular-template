@@ -1,0 +1,19 @@
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.td-center {
+    text-align: center !important;
+    vertical-align: middle !important;
+    align-items: flex-end !important;
+}
+
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: #3f51b5;
+    float: right;
+}
+/* 
+.mat-grid-list {
+    height: 10%;
+} */

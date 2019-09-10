@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><a mat-button [routerLink]="['/']" routerLinkActive="router-link-active"> {{'APP.TITLE'|translate}}</a></span>
+    <span class="example-spacer"></span>
+    <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+    <a routerLink="cart" routerLinkActive="active" *ngIf="currentUser&&currentUser.role !== 'admin'" mat-button>
+      <mat-icon>shopping_cart</mat-icon>
+      {{'APP.CART'|translate}}
+    </a>
+    <button *ngIf="currentUser" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>person_outline</mat-icon>{{currentUser.userName}} <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item [routerLink]="['/manage']" routerLinkActive="router-link-active"
+        *ngIf="currentUser&&currentUser.role == 'admin'">{{'APP.MANAGE'|translate}}</a>
+      <a mat-menu-item data-toggle="modal" href="javascript:void(0)" (click)="logOut()">{{'APP.LOGOUT'|translate}}</a>
+    </mat-menu>
+    <a *ngIf="!currentUser" mat-button routerLink="login" routerLinkActive="active">{{'LOGIN.TITLE'|translate}}</a>
+    <span class="example-fill-remaining-space"></span>
+
+    <button class="mat-select-arrow-wrapper" mat-button [matMenuTriggerFor]="languageMenu">Language - {{defaultLanguage}} <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage(lang)" *ngFor="let lang of translate.getLangs()"
+        [value]="lang">{{lang}}</button>
+    </mat-menu>
+
+    <!-- <div layout="row" layout-align="end center">
+      <a mat-button routerLinkActive="active">Language</a>
+      <mat-select style="text-align:right;width: 5%" placeholder="Language" #langSelect
+        (change)="translate.use(langSelect.value)">
+        <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+          {{lang}}</mat-option>
+      </mat-select>
+    </div> -->
+  </mat-toolbar-row>
+</mat-toolbar>

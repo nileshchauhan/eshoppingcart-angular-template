@@ -1,0 +1,25 @@
+{
+  "LOGIN": {
+    "TITLE": "S'identifier",
+    "EMAIL": "Email",
+    "PASSWORD": "Mot de passe",
+    "CANCEL": "Annuler"
+  },
+  "APP": {
+    "TITLE": "A chats",
+    "LOGOUT": "Connectez - Out",
+    "CART": "Chariot",
+    "MANAGE": "Gérer",
+    "PRODUCT": "Produit",
+    "USER": "Utilisateur",
+    "CONTINUE_SHOPPING":"Continuer vos achats",
+    "CHECKOUT":"Check-out"
+  },
+  "MESSAGE": {
+    "EMPTY_EMAIL": "S'il vous plaît entrer email",
+    "INVALID_EMAIL": "S'il vous plaît entrer email valide",
+    "EMPTY_PASSWORD": "Veuillez entrer le mot de passe",
+    "INVALID_PASSWORD": "Veuillez entrer un mot de passe valide",
+    "INVALID_CRED": "Identifiants non valides .. Veuillez réessayer!"
+  }
+}

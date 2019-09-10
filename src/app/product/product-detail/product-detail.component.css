@@ -1,0 +1,48 @@
+.panel {
+    /* position: fixed; */
+    padding: 0;
+    margin: .100rem;
+    top: 1;
+    left: 0;
+    width: 99%;
+    height: 99% !important;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: #3f51b5;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+.example-card {
+    max-width: 400px;
+    padding: 1;
+}
+
+.mat-card {
+    margin: .875rem;
+    background: #fff;
+    color: rgba(0, 0, 0, .87);
+}
+
+.mat-grid-title {
+    height: 100% !important;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.mat-card-image {
+    height: 300px;
+    width: 100%
+}

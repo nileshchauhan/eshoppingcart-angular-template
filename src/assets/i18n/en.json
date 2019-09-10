@@ -1,0 +1,25 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CANCEL": " Cancel"
+  },
+  "APP": {
+    "TITLE": "E-Shopping",
+    "LOGOUT": "Logout",
+    "CART": "Cart",
+    "MANAGE": "Manage",
+    "PRODUCT":"Product",
+    "USER":"User",
+    "CONTINUE_SHOPPING":"Continue Shopping",
+    "CHECKOUT":"Checkout"
+  },
+  "MESSAGE": {
+    "EMPTY_EMAIL": "Please enter email",
+    "INVALID_EMAIL": "Please enter valid email",
+    "EMPTY_PASSWORD": "Please enter password",
+    "INVALID_PASSWORD": "Please enter valid password",
+    "INVALID_CRED": "Invalid credentials.. Please try again!"
+  }
+}

@@ -1,0 +1,9 @@
+<app-header></app-header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<div *ngIf="showLoader" class="overlay">
+  <mat-progress-spinner class="spinner" color="primary" mode="indeterminate" value="50">
+  </mat-progress-spinner>
+</div>
+<app-footer></app-footer>
