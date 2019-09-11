@@ -10,7 +10,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { CustomValidator } from 'src/app/service/custom-validator';
-import { SnackbarService } from 'src/app/service/snackbar.service';
+import { NotificationService } from 'src/app/core/service/notification.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -30,7 +30,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, private router: Router,
     private authService: AuthenticationService,
-    private snackbarService: SnackbarService, private cartService: CartService) {
+    private notification: NotificationService, private cartService: CartService) {
     this.currentUser = this.authService.currentUserValue;
     this.userId = this.currentUser ? this.currentUser.userId : 0;
   }
@@ -62,7 +62,7 @@ export class ProductDetailComponent implements OnInit {
 
     let cartItem: CartItem = { "productId": this.productId, "quantity": parseInt(this.productForm.value.quantity) } as CartItem;
     this.cartService.addItemToCart(this.userId, cartItem).subscribe((response: GenericResponse<string>) => {
-      this.snackbarService.openSnackBar(response.message, 'success');
+      this.notification.success(response.message);
       this.router.navigateByUrl('cart');
     });
   }

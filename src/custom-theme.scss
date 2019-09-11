@@ -1,9 +1,6 @@
-
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/theming";
+@import "~ngx-toastr/toastr";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -20,63 +17,37 @@ $shopping-cart-demo-accent: mat-palette($mat-pink, A200, A100, A400);
 $shopping-cart-demo-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$shopping-cart-demo-theme: mat-light-theme($shopping-cart-demo-primary, $shopping-cart-demo-accent, $shopping-cart-demo-warn);
+$shopping-cart-demo-theme: mat-light-theme(
+  $shopping-cart-demo-primary,
+  $shopping-cart-demo-accent,
+  $shopping-cart-demo-warn
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($shopping-cart-demo-theme);
 .overlay {
-  position:fixed;
-  display:block;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  background-color:rgba(74,74,74,.8);
-  z-index:99999;
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(74, 74, 74, 0.8);
+  z-index: 99999;
 }
 .spinner {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-
-.mat-snack-bar-container {
-  // color: #721c24;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-  // box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-  position:absolute;
-  top:0;
-  right:0; 
-  padding: .75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-}
-
-.error {
-  color: #721c24;
-  background-color: #f8d7da !important;
-  border-color: #f5c6cb;
-  // font-weight: lighter;
-}
-
-.success  {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-  // font-weight: initial;
-}
-
 .title-link {
   text-decoration: none;
   /* color: inherit; */
   font-size: 1.25rem;
-  color: rgba(0, 0, 0, .87);
+  color: rgba(0, 0, 0, 0.87);
   font-weight: 500;
 }
 
@@ -84,29 +55,29 @@ $shopping-cart-demo-theme: mat-light-theme($shopping-cart-demo-primary, $shoppin
   // opacity: 1.7;
   /* margin: 15px 15px 15px 15px; */
   // margin-bottom:20px !important;
-  margin: .875rem;
+  margin: 0.875rem;
   background: #fff;
-  color: rgba(0, 0, 0, .87);
+  color: rgba(0, 0, 0, 0.87);
   border-top-color: black;
   border-color: #721c24;
-  border:2;
+  border: 2;
 }
 
-.full-width{
-    width: 100%
+.full-width {
+  width: 100%;
 }
 
-.mat-error{
-    font-size:12px; 
-    margin-bottom: .875rem;
-    font-weight: bold;
+.mat-error {
+  font-size: 12px;
+  margin-bottom: 0.875rem;
+  font-weight: bold;
 }
 
 .strike-price {
-  color: red!important;
+  color: red !important;
 }
 
-body { 
+body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
 }

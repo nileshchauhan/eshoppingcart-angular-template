@@ -3,9 +3,8 @@ import { ProductService } from 'src/app/service/product.service';
 import { GenericResponse } from 'src/app/util/generic-response';
 import { Product } from 'src/app/model/product';
 import { MatSort, MatTableDataSource, MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
-import { LoaderService } from 'src/app/service/loader.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
-import { SnackbarService } from 'src/app/service/snackbar.service';
+import { NotificationService } from 'src/app/core/service/notification.service';
 
 @Component({
   selector: 'app-manage-product',
@@ -22,7 +21,7 @@ export class ManageProductComponent implements OnInit {
 
 
   constructor(
-    private snackbarService: SnackbarService, private productService: ProductService,
+    private notification: NotificationService, private productService: ProductService,
     private dialog: MatDialog) {
 
   }
@@ -49,7 +48,7 @@ export class ManageProductComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === "ok") {
         this.productService.deleteProduct(+(productId)).subscribe((res: GenericResponse<string>) => {
-          this.snackbarService.openSnackBar(res.message, 'success');
+          this.notification.success(res.message);
           this.ngOnInit();
         });
       }

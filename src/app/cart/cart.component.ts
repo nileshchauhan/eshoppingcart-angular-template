@@ -7,7 +7,8 @@ import { AuthenticationService } from '../service/authentication.service';
 import { User } from '../model/user';
 import { MatDialog, MatSnackBar, MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
-import { SnackbarService } from '../service/snackbar.service';
+import { NotificationService } from '../core/service/notification.service';
+
 
 
 @Component({
@@ -28,7 +29,7 @@ export class CartComponent implements OnInit {
   constructor(
     private dialog: MatDialog, private cartService: CartService,
     private authService: AuthenticationService,
-    private snackbarService: SnackbarService) {
+    private notification: NotificationService) {
 
   }
 
@@ -53,7 +54,7 @@ export class CartComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === "ok") {
         this.cartService.deleteCartItemsOfCustomer(parseInt(cartItemId)).subscribe((res: GenericResponse<string>) => {
-          this.snackbarService.openSnackBar(res.message, "success");
+          this.notification.success(res.message);
           this.ngOnInit();
         });
       }

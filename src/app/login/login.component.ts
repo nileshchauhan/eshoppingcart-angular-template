@@ -7,8 +7,7 @@ import { GenericResponse } from '../util/generic-response';
 import { first } from 'rxjs/operators';
 import { User } from '../model/user';
 import { CustomValidator } from '../service/custom-validator';
-import { NGXLogger } from 'ngx-logger';
-import { SnackbarService } from '../service/snackbar.service';
+import { NotificationService } from '../core/service/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +22,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, private router: Router,
-    private authService: AuthenticationService,
-    private snackbarService: SnackbarService) {
+    private authService: AuthenticationService) {
 
   }
 
   ngOnInit() {
-
-    // this.logger.info("Hello this is sprint 4 demo ..");
-
     this.route.queryParamMap.subscribe(params => {
       // this.returnUrl = params.params.returnUrl;
     });
@@ -40,13 +35,7 @@ export class LoginComponent implements OnInit {
       userName: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, CustomValidator.validatePassword])
     });
-
     this.authService.logOut();
-
-    // this.logger.debug('this is debug log')
-    // this.logger.info('this is info log')
-    // this.logger.warn('this is warning log')
-    // this.logger.error('this is error log')
   }
 
   onSubmit() {
@@ -55,8 +44,6 @@ export class LoginComponent implements OnInit {
 
     this.authService.getUserByUserNamePassword(login).pipe(first()).subscribe(
       (response: User) => {
-        console.log('tbis is login response :', response)
-        // this.snackbarService.openSnackBar(response.response[0], "error");
         this.authService.currentUserSubject.next(response);
         localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUserSubject.value));
         if (this.authService.currentUserSubject.value.role === 'admin') {

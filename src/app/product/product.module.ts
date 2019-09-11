@@ -4,17 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product-list/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { DiscountCalculatorPipe } from '../shared/discount-calculator/discount-calculator.pipe';
-import { DiscountedPriceDirective } from '../shared/discounted-price/discounted-price.directive';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 
     imports: [
         CommonModule, AngularMaterialModule,
-        ProductRoutingModule, FormsModule, ReactiveFormsModule
+        ProductRoutingModule, FormsModule, ReactiveFormsModule, SharedModule
     ],
-    declarations: [ProductComponent, ProductDetailComponent, DiscountCalculatorPipe,
-        DiscountedPriceDirective], exports: [DiscountedPriceDirective]
+    declarations: [ProductComponent, ProductDetailComponent], exports: []
 })
 export class ProductModule { }
