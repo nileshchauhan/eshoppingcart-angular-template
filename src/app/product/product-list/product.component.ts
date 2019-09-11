@@ -12,7 +12,7 @@ import { NotificationService } from 'src/app/core/service/notification.service';
   providers: [ProductService]
 })
 
-export class ProductComponent implements OnInit, AfterContentInit {
+export class ProductComponent implements OnInit {
 
   customerId;
   customerName;
@@ -29,13 +29,8 @@ export class ProductComponent implements OnInit, AfterContentInit {
     this.customerId = window.localStorage.getItem('id');
     this.customerName = window.localStorage.getItem('customerName');
     this.productService.getAllProducts().subscribe((response: GenericResponse<Product[]>) => {
-      console.log('this is product response : ', response);
       this.products = (response.response);
     });
-  }
-
-  ngAfterContentInit(): void {
-    this.notification.show('this is notification');
   }
 
   viewProductDetail(productId: number) {

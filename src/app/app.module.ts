@@ -18,7 +18,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AppConstant } from './util/app-constant';
-
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 

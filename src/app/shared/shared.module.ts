@@ -7,10 +7,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DiscountCalculatorPipe } from './discount-calculator/discount-calculator.pipe';
 import { DiscountedPriceDirective } from './discounted-price/discounted-price.directive';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        AngularMaterialModule,
         FlexLayoutModule,
         ToastrModule.forRoot(), // ToastrModule added
         TranslateModule
