@@ -60,7 +60,7 @@ export class ProductDetailComponent implements OnInit {
       return;
     }
 
-    let cartItem: CartItem = { "productId": this.productId, "quantity": parseInt(this.productForm.value.quantity) } as CartItem;
+    const cartItem: CartItem = { productId: this.productId, quantity: this.productForm.value.quantity } as CartItem;
     this.cartService.addItemToCart(this.userId, cartItem).subscribe((response: GenericResponse<string>) => {
       this.notification.success(response.message);
       this.router.navigateByUrl('cart');
