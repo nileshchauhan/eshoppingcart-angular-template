@@ -12,6 +12,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SharedModule } from '../shared/shared.module';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -19,7 +20,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
 
     imports: [
-        CommonModule, AngularMaterialModule,
+        CommonModule, AngularMaterialModule, SharedModule,
         FormsModule, ReactiveFormsModule, ManageRoutingModule, TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -28,6 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
     ],
-    declarations: [ManageComponent, ManageProductComponent, ManageUserComponent, AddUpdateProductComponent], exports: []
+    declarations: [ManageComponent, ManageProductComponent, ManageUserComponent, AddUpdateProductComponent],
+    exports: []
 })
 export class ManageModule { }

@@ -1,5 +1,6 @@
 <mat-card class="example-card">
     <mat-card-content>
+        <ng-spinner *ngIf="dataLoading" [loading]="dataLoading"></ng-spinner>
         <mat-form-field style="width:70%">
             <input matInput (keyup)="applyFilter($event.target.value)"
                 placeholder="Please enter text you want to search">
@@ -32,8 +33,12 @@
             <ng-container matColumnDef="action">
                 <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
                 <mat-cell *matCellDef="let product">
-                    <a class="title-link" [routerLink]="['edit',product.id]" routerLinkActive="router-link-active"><mat-icon>edit</mat-icon> </a>
-                    <a class="title-link" href="javascript:void(0)" (click)="deleteProduct(product.id)"> <mat-icon>delete_outline</mat-icon></a> </mat-cell>
+                    <a class="title-link" [routerLink]="['edit',product.id]" routerLinkActive="router-link-active">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <a class="title-link" href="javascript:void(0)" (click)="deleteProduct(product.id)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </a> </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="['image','name','description','rate','action']"></mat-header-row>
             <mat-row *matRowDef="let row; columns:['image','name','description','rate','action'];"></mat-row>

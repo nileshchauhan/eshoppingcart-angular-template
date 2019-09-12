@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, EventEmitter } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { GenericResponse } from 'src/app/util/generic-response';
 import { Product } from 'src/app/model/product';
 import { MatSort, MatTableDataSource, MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { NotificationService } from 'src/app/core/service/notification.service';
+
 
 @Component({
   selector: 'app-manage-product',
@@ -14,7 +15,8 @@ import { NotificationService } from 'src/app/core/service/notification.service';
 export class ManageProductComponent implements OnInit {
 
   products: Product[];
-
+  showLoader;
+  dataLoading: EventEmitter<boolean> = new EventEmitter(true);
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource;
@@ -27,7 +29,10 @@ export class ManageProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataLoading.emit(true);
+    console.log('submit true from manage product');
     this.productService.getAllProducts().subscribe((response: GenericResponse<Product[]>) => {
+      this.dataLoading.emit(false);
       this.products = (response.response);
       this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.sort = this.sort;

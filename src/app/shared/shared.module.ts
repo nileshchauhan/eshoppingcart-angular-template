@@ -8,6 +8,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { DiscountCalculatorPipe } from './discount-calculator/discount-calculator.pipe';
 import { DiscountedPriceDirective } from './discounted-price/discounted-price.directive';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     declarations: [
         ConfirmDialogComponent,
         DiscountCalculatorPipe,
-        DiscountedPriceDirective
+        DiscountedPriceDirective,
+        SpinnerComponent
     ],
     schemas: [],
     providers: [],
@@ -34,7 +36,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
         ToastrModule,
         ConfirmDialogComponent,
         DiscountCalculatorPipe,
-        DiscountedPriceDirective
+        DiscountedPriceDirective,
+        SpinnerComponent
     ]
 })
 export class SharedModule { }
