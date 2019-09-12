@@ -6,13 +6,15 @@ import { ProductComponent } from './product-list/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { SharedModule } from '../shared/shared.module';
+import { ManageModule } from '../manage/manage.module';
 
 @NgModule({
 
     imports: [
-        CommonModule, AngularMaterialModule,
+        CommonModule, AngularMaterialModule, ManageModule,
         ProductRoutingModule, FormsModule, ReactiveFormsModule, SharedModule
     ],
-    declarations: [ProductComponent, ProductDetailComponent], exports: []
+    declarations: [ProductComponent, ProductDetailComponent]
+    , exports: []
 })
 export class ProductModule { }

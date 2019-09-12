@@ -1,7 +1,5 @@
 import { Component, Input, AfterContentChecked, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from './model/user';
-import { LoaderService } from './service/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -15,7 +13,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   currentUser: User;
   showLoader: boolean;
 
-  constructor(public translate: TranslateService, private ref: ChangeDetectorRef, private loaderService: LoaderService) {
+  constructor(public translate: TranslateService, private ref: ChangeDetectorRef) {
   }
 
 
@@ -24,7 +22,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.ref.detectChanges();
-    this.showLoader = this.loaderService.showLoader;
     this.translate.addLangs(['en', 'fr']);
     this.translate.setDefaultLang('en');
   }
