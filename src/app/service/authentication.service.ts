@@ -38,6 +38,7 @@ export class AuthenticationService {
             userId: 1,
             userName: 'nilesh@gmail.com',
             password: 'pmc123',
+            // role: 'admin',
             role: 'user',
             firstName: 'Nilesh',
             lastName: 'Chauhan'

@@ -9,15 +9,17 @@ import { AddUpdateProductComponent } from './add-update-product/add-update-produ
 
 const routes: Routes = [
 
+    { path: 'manage', redirectTo: 'manage/product', pathMatch: 'full' },
     {
-        path: '', component: ManageComponent, children:
-            [{ path: 'product', component: ManageProductComponent },
-            { path: 'product/:action', component: AddUpdateProductComponent },
-            { path: 'product/:action/:productId', component: AddUpdateProductComponent },
-            { path: 'user', component: ManageUserComponent }]
+        path: 'manage', component: ManageComponent, children: [
+            { path: '', redirectTo: 'product', pathMatch: 'full' },
+            { path: 'product', component: ManageProductComponent },
+            { path: 'user', component: ManageUserComponent },
+            // { path: ':action', component: AddUpdateProductComponent },
+            { path: ':action/:productId', component: AddUpdateProductComponent }
+        ]
     }
-
-]
+];
 
 @NgModule({
     imports: [
