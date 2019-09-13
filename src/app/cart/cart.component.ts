@@ -46,18 +46,25 @@ export class CartComponent implements OnInit {
   }
 
   removeItemFromCart(cartItemId) {
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '25%',
       data: 'Are you sure you want to remove item from cart ?'
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === "ok") {
-        this.cartService.deleteCartItemsOfCustomer(parseInt(cartItemId)).subscribe((res: GenericResponse<string>) => {
-          this.notification.success(res.message);
-          this.ngOnInit();
-        });
+      if (result === 'ok') {
+        this.cartService.deleteCartItemsOfCustomer(cartItemId)
+          .subscribe((res: GenericResponse<string>) => {
+            this.notification.success(res.message);
+            this.ngOnInit();
+          });
       }
+    });
+  }
+
+  checkout() {
+    this.cartService.checkout(this.currentUser.userId).subscribe((response: GenericResponse<string>) => {
+      console.log('########################');
+      console.log(response);
     });
   }
 

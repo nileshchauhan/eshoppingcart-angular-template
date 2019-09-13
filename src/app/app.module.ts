@@ -20,6 +20,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AppConstant } from './util/app-constant';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { FeatureModule } from './feature/feature.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,7 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     disableConsoleLogging: true
   }),
     BrowserModule, ProductModule, AngularMaterialModule,
-    AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule
+    AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule, FeatureModule
   ],
   providers: [AuthenticationService, AuthGuard,
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }

@@ -26,8 +26,13 @@
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
         <mat-cell *matCellDef="let cartDetail">
-          <a class="title-link" [routerLink]="['../product',cartDetail.productId]" routerLinkActive="router-link-active"><mat-icon>edit</mat-icon> </a>
-          <a class="title-link" href="javascript:void(0)" (click)="removeItemFromCart(cartDetail.id)"><mat-icon>delete_outline</mat-icon></a> </mat-cell>
+          <a class="title-link" [routerLink]="['../product',cartDetail.productId]"
+            routerLinkActive="router-link-active">
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a class="title-link" href="javascript:void(0)" (click)="removeItemFromCart(cartDetail.id)">
+            <mat-icon>delete_outline</mat-icon>
+          </a> </mat-cell>
         <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="['image','productName','orderQuantity','totalAmount','action']">
@@ -45,7 +50,7 @@
     <div class="col mb-2">
       <div class="row">
         <a mat-button routerLink="/home" class="btn-primary">{{'APP.CONTINUE_SHOPPING'|translate}}</a>
-        <a mat-button class="btn-primary right-button">{{'APP.CHECKOUT'|translate}}</a>
+        <a mat-button (click)="checkout()" class="btn-primary right-button">{{'APP.CHECKOUT'|translate}}</a>
       </div>
     </div>
   </mat-card-content>
