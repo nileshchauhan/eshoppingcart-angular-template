@@ -24,7 +24,7 @@ const routes: Routes = [
     data: {
       expectedRole: ['user']
     }
-    , loadChildren: './feature/feature.module.ts#FeatureModule'
+    , loadChildren: './feature/feature.module#FeatureModule'
   },
   { path: 'login', component: LoginComponent }
 ];

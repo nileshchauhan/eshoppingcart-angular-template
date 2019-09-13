@@ -13,7 +13,7 @@ import { AuthGuard } from './service/auth-guard.service';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
@@ -21,6 +21,7 @@ import { AppConstant } from './util/app-constant';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
+import { OrderService } from './service/order.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule, ProductModule, AngularMaterialModule,
     AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule, FeatureModule
   ],
-  providers: [AuthenticationService, AuthGuard,
+  providers: [AuthenticationService, OrderService, AuthGuard,
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   entryComponents: [],

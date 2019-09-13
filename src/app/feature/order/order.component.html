@@ -1,1 +1,27 @@
-<p>order works!</p>
+<mat-card *ngFor="let order of data" class="example-card" style="width:50% ">
+    <mat-card-title>
+        OrderId : {{order['1'].orderId}}
+        <span style="float: right;"> Total Order Amount : {{order['1'].totalAmount}}</span>
+    </mat-card-title>
+    <mat-card-content>
+        <ng-spinner *ngIf="dataLoading" [loading]="dataLoading"></ng-spinner>
+        <table class="table table-hover" width="50%">
+            <thead>
+                <tr>
+                    <th scope="col">ProductName</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of order['1'].items">
+                    <td>{{product.productName}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.price*product.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>

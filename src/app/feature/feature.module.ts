@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FeatureRoutingModule } from './feature.routing.module';
 import { OrderComponent } from './order/order.component';
 
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -25,6 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
         }),
     ],
     declarations: [OrderComponent],
+    providers: [],
     exports: []
 })
 export class FeatureModule { }

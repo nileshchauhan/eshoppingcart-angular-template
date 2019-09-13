@@ -1,5 +1,5 @@
 export interface GenericResponse<T> {
-  statusCode: number;
+  code: number;
   message: string;
   response: T;
 }

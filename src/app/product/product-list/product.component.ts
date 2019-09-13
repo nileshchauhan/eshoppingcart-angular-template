@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
     this.customerId = window.localStorage.getItem('id');
     this.customerName = window.localStorage.getItem('customerName');
     this.productService.getAllProducts().subscribe((response: GenericResponse<Product[]>) => {
-      setTimeout(() => { this.dataLoading.emit(false); }, 5000);
+      this.dataLoading.emit(false);
       this.products = (response.response);
     });
   }

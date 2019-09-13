@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild, AfterViewInit, EventEmitter } from '@angu
 import { ProductService } from 'src/app/service/product.service';
 import { GenericResponse } from 'src/app/util/generic-response';
 import { Product } from 'src/app/model/product';
-import { MatSort, MatTableDataSource, MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { NotificationService } from 'src/app/core/service/notification.service';
 
@@ -17,8 +21,8 @@ export class ManageProductComponent implements OnInit {
   products: Product[];
   showLoader;
   dataLoading: EventEmitter<boolean> = new EventEmitter(true);
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   dataSource;
 
 
