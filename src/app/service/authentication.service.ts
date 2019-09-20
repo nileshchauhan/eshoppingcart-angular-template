@@ -2,8 +2,10 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Login } from '../model/login';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { AppConstant } from '../util/app-constant';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../model/user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User, IdToken } from '../model/user';
+import * as jwt from 'angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 
@@ -15,17 +17,23 @@ export class AuthenticationService {
     user: User;
     currentUserSubject: BehaviorSubject<User>;
     currentUser: Observable<User>;
+    jwtHelper: JwtHelperService = new JwtHelperService();
 
+    accessToken: string;
     constructor(private http: HttpClient) {
         this.user = JSON.parse(localStorage.getItem('currentUser')) as User;
         this.currentUserSubject = new BehaviorSubject<User>(this.user);
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    isAuthenicated() {
-        const promise = new Promise((resolve, reject) => {
-            resolve(this.loggedIn);
-        });
+    isAuthenicated(response: User) {
+        const decodedToken = this.jwtHelper.decodeToken(response.access_token);
+        response.role = decodedToken.authorities[0];
+        response.userName = decodedToken.user_name;
+        this.accessToken = response.access_token;
+        localStorage.setItem(AppConstant.TOKEN_NAME, response.access_token);
+        localStorage.setItem('currentUser', JSON.stringify(response));
+        this.currentUserSubject.next(response);
     }
 
     public get currentUserValue(): User {
@@ -33,18 +41,14 @@ export class AuthenticationService {
     }
 
     getUserByUserNamePassword(login: Login): Observable<User> {
-        // return this.http.post<any>(AppConstant.BASE_URL + 'users/login', login);
-        const user: User = {
-            userId: 1,
-            userName: 'nilesh@gmail.com',
-            password: 'pmc123',
-            // role: 'admin',
-            role: 'user',
-            firstName: 'Nilesh',
-            lastName: 'Chauhan'
+        const body = `username=${encodeURIComponent(login.userName)}&password=${encodeURIComponent(login.password)}&grant_type=password`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: 'Basic ' + btoa(AppConstant.TOKEN_AUTH_USERNAME + ':' + AppConstant.TOKEN_AUTH_PASSWORD)
+            })
         };
-        return of(user);
-        // return of( as User);
+        return this.http.post<User>(AppConstant.TOKEN_URL, body, httpOptions);
     }
 
     logOut() {

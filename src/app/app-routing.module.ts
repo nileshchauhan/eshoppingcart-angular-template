@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'cart', canActivate: [AuthGuard], component: CartComponent, data: {
-      expectedRole: ['admin', 'user']
+      expectedRole: ['admin', 'USER']
     }
   },
   {

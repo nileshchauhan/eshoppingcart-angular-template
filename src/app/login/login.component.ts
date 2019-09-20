@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.getUserByUserNamePassword(login).pipe(first()).subscribe(
       (response: User) => {
-        this.authService.currentUserSubject.next(response);
-        localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUserSubject.value));
+        this.authService.isAuthenicated(response);
         if (this.authService.currentUserSubject.value.role === 'admin') {
           this.router.navigate(['manage']);
         } else {
