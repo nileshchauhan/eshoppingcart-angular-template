@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.authService.currentUserValue;
     this.cartService.getCartItemsOfCustomer(this.currentUser.userId).subscribe((res: GenericResponse<CartItem[]>) => {
-      this.cartDetails = (res.response);
+      this.cartDetails = (res.list);
       this.total = this.cartDetails.map((detail: CartItem) => detail.totalAmount).reduce((acc, value) => acc + value, 0);
       this.dataSource = new MatTableDataSource(this.cartDetails);
       this.dataSource.sort = this.sort;

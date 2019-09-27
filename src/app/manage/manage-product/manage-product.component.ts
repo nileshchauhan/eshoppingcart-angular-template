@@ -37,7 +37,7 @@ export class ManageProductComponent implements OnInit {
     console.log('submit true from manage product');
     this.productService.getAllProducts().subscribe((response: GenericResponse<Product[]>) => {
       this.dataLoading.emit(false);
-      this.products = (response.response);
+      this.products = (response.list);
       this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

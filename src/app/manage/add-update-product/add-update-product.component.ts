@@ -19,7 +19,7 @@ export class AddUpdateProductComponent implements OnInit {
   action: string = 'add';
 
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService,
-              private notification: NotificationService) {
+    private notification: NotificationService) {
   }
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class AddUpdateProductComponent implements OnInit {
 
     if (this.action === 'edit') {
       this.productService.getProductById(this.productId).subscribe((response: GenericResponse<Product[]>) => {
-        this.product = response.response[0];
+        this.product = response.list[0];
       });
     }
   }

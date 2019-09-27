@@ -10,19 +10,19 @@ const routes: Routes = [
   {
     path: 'manage', canActivate: [AuthGuard],
     data: {
-      expectedRole: ['admin']
+      expectedRole: ['ADMIN']
     }
     , loadChildren: './manage/manage.module#ManageModule'
   },
   {
     path: 'cart', canActivate: [AuthGuard], component: CartComponent, data: {
-      expectedRole: ['admin', 'USER']
+      expectedRole: ['ADMIN', 'USER']
     }
   },
   {
     path: 'orders', canActivate: [AuthGuard],
     data: {
-      expectedRole: ['user']
+      expectedRole: ['USER']
     }
     , loadChildren: './feature/feature.module#FeatureModule'
   },

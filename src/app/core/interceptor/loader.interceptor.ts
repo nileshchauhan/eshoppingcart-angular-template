@@ -26,8 +26,6 @@ export class LoaderInterceptor implements HttpInterceptor {
         //     finalize(() => { })
         // );
 
-
-
         const currentUser = this.authService.currentUserValue;
         const isLoggedIn = currentUser && currentUser.access_token;
         const isApiUrl = request.url.startsWith(AppConstant.BASE_URL);

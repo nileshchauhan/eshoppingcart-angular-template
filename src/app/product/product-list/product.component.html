@@ -1,17 +1,17 @@
 <mat-grid-list cols="4">
   <mat-grid-tile *ngFor="let product of products">
-    <a class="title-link" style="height: 100% !important" [routerLink]="['/product',product.id]"
+    <a class="title-link" style="height: 100% !important" [routerLink]="['/product',product.productId]"
       routerLinkActive="router-link-active">
       <mat-card class="example-card">
-        <img mat-card-image src="{{product?.image}}" height="150" style="width: 100%" alt="{{product?.name}}">
+        <img mat-card-image src="{{product?.image}}" height="150" style="width: 100%" alt="{{product?.productName}}">
         <mat-card-content>
-          <a class="title-link" [routerLink]="['/product',product.id]" routerLinkActive="router-link-active"
-            routerLinkActive="router-link-active">{{product.name}}</a>
+          <a class="title-link" [routerLink]="['/product',product.productId]" routerLinkActive="router-link-active"
+            routerLinkActive="router-link-active">{{product.productName}}</a>
           <p title="" [matTooltip]="product.description">
-            {{ product.description | slice: 0:40 }}{{product.description && product.description.length > 40 ? '...':''}}
+            {{ product.description | slice: 0:40 }}{{product.productName && product.productName.length > 40 ? '...':''}}
           </p>
-          Price : $<del *ngIf="product.discount" class="strike-price">{{product.price}}</del>
-          <span appDiscountedPrice>{{product.price|discountCalculator:product.discount}}</span>
+          Price : $<del *ngIf="product.discount" class="strike-price">{{product.productPrice}}</del>
+          <span appDiscountedPrice>{{product.productPrice|discountCalculator:product.discount}}</span>
         </mat-card-content>
       </mat-card>
     </a>

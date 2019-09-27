@@ -24,8 +24,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataLoading.emit(true);
     this.orderService.getOrderOfCustomer(1).subscribe(res => {
-      this.data = res.response;
-      console.log(res.response);
+      this.data = res.list;
       this.dataLoading.emit(false);
     });
   }

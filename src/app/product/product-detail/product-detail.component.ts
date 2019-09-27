@@ -41,7 +41,7 @@ export class ProductDetailComponent implements OnInit {
 
     });
     this.cartService.getProductDetail(this.userId, +this.productId).subscribe((response: GenericResponse<Product[]>) => {
-      this.productDetail = (response.response[0]);
+      this.productDetail = (response.list[0]);
       this.quantity = this.productDetail.quantity;
     });
 
