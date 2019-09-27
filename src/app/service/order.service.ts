@@ -14,7 +14,9 @@ export class OrderService {
     constructor(private http: HttpClient) { }
 
     getOrderOfCustomer(customerId: number): Observable<GenericResponse<Array<Map<number, IOrderReportDto>>>> {
-        return this.http.get<GenericResponse<Array<Map<number, IOrderReportDto>>>>(AppConstant.BASE_URL + 'orders/' + customerId);
+        // return this.http.get<GenericResponse<Array<Map<number, IOrderReportDto>>>>(AppConstant.BASE_URL + 'orders/' + customerId);
+        return this.http.get<GenericResponse<Array<Map<number, IOrderReportDto>>>>(AppConstant.BASE_URL + 'order/get-customer-orders/'
+            + customerId);
     }
 
 }

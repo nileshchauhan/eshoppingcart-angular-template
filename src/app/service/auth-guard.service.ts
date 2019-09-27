@@ -10,8 +10,9 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         return new Promise((resolve, rejects) => {
-            let expectedRole: boolean = false;
-            let expectedRoleArray: string[] = route.data.expectedRole;
+            let expectedRole = false;
+            const expectedRoleArray: string[] = route.data.expectedRole;
+            // tslint:disable-next-line: prefer-for-of
             for (let i = 0; i < expectedRoleArray.length; i++) {
                 if (expectedRoleArray[i] == (this.authService.currentUserSubject.value && this.authService.currentUserSubject.value.role)) {
                     expectedRole = true;

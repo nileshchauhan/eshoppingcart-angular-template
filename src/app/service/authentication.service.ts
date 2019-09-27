@@ -30,6 +30,7 @@ export class AuthenticationService {
         const decodedToken = this.jwtHelper.decodeToken(response.access_token);
         response.role = decodedToken.authorities[0];
         response.userName = decodedToken.user_name;
+        response.userId = decodedToken.userId;
         this.accessToken = response.access_token;
         localStorage.setItem(AppConstant.TOKEN_NAME, response.access_token);
         localStorage.setItem('currentUser', JSON.stringify(response));
